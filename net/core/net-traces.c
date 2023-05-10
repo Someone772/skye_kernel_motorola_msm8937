@@ -31,6 +31,7 @@
 #include <trace/events/napi.h>
 #include <trace/events/sock.h>
 #include <trace/events/udp.h>
+#include <trace/events/tcp.h>
 #include <trace/events/fib.h>
 #if IS_ENABLED(CONFIG_IPV6)
 #include <trace/events/fib6.h>
@@ -40,3 +41,5 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(fib6_table_lookup);
 EXPORT_TRACEPOINT_SYMBOL_GPL(kfree_skb);
 
 EXPORT_TRACEPOINT_SYMBOL_GPL(napi_poll);
+
+EXPORT_TRACEPOINT_SYMBOL_GPL(tcp_send_reset);
