@@ -7,7 +7,7 @@ SECONDS=0 # builtin bash timer
 ZIPNAME="Skyline-aljeter-$(date '+%Y%m%d-%H%M').zip"
 TC_DIR="$(pwd)/tc/clang-r450784e"
 AK3_DIR="$(pwd)/android/AnyKernel3"
-DEFCONFIG="jeter_defconfig"
+DEFCONFIG="aljeter_defconfig"
 
 if test -z "$(git rev-parse --show-cdup 2>/dev/null)" &&
    head=$(git rev-parse --verify HEAD 2>/dev/null); then
@@ -41,6 +41,9 @@ fi
 if [[ $1 = "-c" || $1 = "--clean" ]]; then
 	rm -rf out
 fi
+
+# KSU
+rm -rf KernelSU && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 
 mkdir -p out
 make O=out ARCH=arm64 $DEFCONFIG

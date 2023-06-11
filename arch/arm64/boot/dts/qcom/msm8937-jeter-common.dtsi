@@ -390,7 +390,7 @@ int_codec: sound {
 };
 
 &spmi_bus {
-	qcom,pm8937@2 {
+	qcom,pmi8950@2 {
 		/delete-node/ qcom,leds@a100;
 			qcom,leds@1000 {
 			status = "ok";
