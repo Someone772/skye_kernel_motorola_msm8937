@@ -489,14 +489,14 @@ int_codec: sound {
 				     <0x3 0xc0 0x1 IRQ_TYPE_EDGE_BOTH>;
 			interrupt-names = "hap-sc-irq", "hap-play-irq";
 			qcom,actuator-type = "erm";
-			qcom,vmax-mv = <2600>;
+			qcom,vmax-mv = <3000>;
 			qcom,play-rate-us = <5263>;
 			vdd-supply = <&pon_perph_reg>;
 
 			wf_0 {
 				/* CLICK */
 				qcom,effect-id = <0>;
-				qcom,wf-vmax-mv = <2600>;
+				qcom,wf-vmax-mv = <3000>;
 				qcom,wf-pattern = [7e 7e 7e];
 				qcom,wf-play-rate-us = <5263>;
 				qcom,wf-brake-pattern = [01 00 01 00];
@@ -504,7 +504,7 @@ int_codec: sound {
 			wf_1 {
 				/* DOUBLE CLICK */
 				qcom,effect-id = <1>;
-				qcom,wf-vmax-mv = <2600>;
+				qcom,wf-vmax-mv = <3000>;
 				qcom,wf-pattern = [7e 7e 02 02 02 02 02 02];
 				qcom,wf-play-rate-us = <5639>;
 				qcom,wf-repeat-count = <2>;
@@ -513,28 +513,28 @@ int_codec: sound {
 			wf_2 {
 				/* TICK */
 				qcom,effect-id = <2>;
-				qcom,wf-vmax-mv = <2600>;
+				qcom,wf-vmax-mv = <3000>;
 				qcom,wf-pattern = [7e 7e];
 				qcom,wf-play-rate-us = <3158>;
 			};
 			wf_3 {
 				/* THUD */
 				qcom,effect-id = <3>;
-				qcom,wf-vmax-mv = <2600>;
+				qcom,wf-vmax-mv = <3000>;
 				qcom,wf-pattern = [7e 7e 7e];
 				qcom,wf-play-rate-us = <5263>;
 			};
 			wf_4 {
 				/* POP */
 				qcom,effect-id = <4>;
-				qcom,wf-vmax-mv = <2600>;
+				qcom,wf-vmax-mv = <3000>;
 				qcom,wf-pattern = [7e 7e];
 				qcom,wf-play-rate-us = <3947>;
 			};
 			wf_5 {
 				/* HEAVY CLICK */
 				qcom,effect-id = <5>;
-				qcom,wf-vmax-mv = <2600>;
+				qcom,wf-vmax-mv = <3000>;
 				qcom,wf-pattern = [7e 7e 7e 7e 02 02 7e 7e];
 				qcom,wf-play-rate-us = <5263>;
 			};
