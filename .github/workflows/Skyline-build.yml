@@ -56,3 +56,4 @@ jobs:
           message: |
              Nova versão do Skyline Kernel disponível para download!
              Tempo de build: ${{ env.BUILD_DURATION }}
+             Mudanças: Restaurado valor original de qcom,wf-vmax-mv de al/jeter
