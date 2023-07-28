@@ -1,11 +1,9 @@
 name: Skyline Kernel
 
 on:
-  push:
+  workflow_dispatch:
     branches:
       - aljeter-337
-    paths:
-      - '.github/workflows/Skyline-build.yml'
 
 jobs:
   build:
