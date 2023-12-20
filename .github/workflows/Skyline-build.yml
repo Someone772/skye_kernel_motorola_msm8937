@@ -54,15 +54,37 @@ jobs:
           echo "COMMIT_POINT=${COMMIT_POINT}" >> $GITHUB_ENV
           echo "HEAD_COMMIT=${HEAD_COMMIT}" >> $GITHUB_ENV
 
-      - name: Upload to Telegram
-        uses: appleboy/telegram-action@master
+     - name: Upload Kernel-${{ matrix.device }}
+        uses: actions/upload-artifact@v3
         with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          document: Skyline-aljeter*.zip
-          message: |
-             Nova versão do Skyline Kernel disponível!
-
+          name: Kernel-${{ matrix.device }}
+          path: kernel-source/out/arch/arm64/boot/*
+          
+      - name: Prepare Anykernel
+        working-directory: anykernel
+        run: |
+          cp -f $GITHUB_WORKSPACE/kernel-source/out/arch/arm64/boot/Image.gz-dtb .
+          ZIP_NAME="Kernel-v-${{ env.KSU_VERSION }}-${{ matrix.device }}-${{ env.date }}"
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+          zip -r "$ZIP_NAME.zip" *
+          mv "$ZIP_NAME.zip" $GITHUB_WORKSPACE
+          
+      - name: Upload Anykernel
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ZIP_NAME }}
+          path: anykernel/*
+      
+      - name: Release
+        if: success()
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "KernelSU For ${{ matrix.device }}"
+          body_path: "INFO.txt"
+          files: |
+            kernel-source/out/arch/arm64/boot/*
+            ${{ env.ZIP_NAME }}.zip
+          tag_name: ${{ github.run_number }}-${{ github.ref }}-${{ matrix.device }}
              Tempo de build: ${{ env.BUILD_DURATION }}
 
              Último commit: ${{ env.COMMIT_POINT }}
