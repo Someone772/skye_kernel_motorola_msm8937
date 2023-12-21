@@ -54,12 +54,6 @@ runs-on: ubuntu-latest
           echo "COMMIT_POINT=${COMMIT_POINT}" >> $GITHUB_ENV
           echo "HEAD_COMMIT=${HEAD_COMMIT}" >> $GITHUB_ENV
 
-     - name: Upload Kernel-${{ matrix.device }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: Kernel-${{ matrix.device }}
-          path: kernel-source/out/arch/arm64/boot/*
-          
       - name: Prepare Anykernel
         working-directory: anykernel
         run: |
